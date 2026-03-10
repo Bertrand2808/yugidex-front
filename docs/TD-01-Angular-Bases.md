@@ -14,6 +14,19 @@ ng new yugidex-front --package-manager=bun --style=scss --routing=true
 
 # Ensuite dans le dossier du projet
 bun install          # ≈ npm install
+```
+
+Si tout va bien, ça doit avoir donner ça en sortie :
+
+![alt text](img/image.png)
+
+Et avoir généré un fichier (déjà présent dans le répo git) `bun.lock`. Le fichier lock est une "photographie" exacte de tes dépendances à un instant T.
+
+![alt text](img/image2.png)
+
+Continuons...
+
+```bash
 bun run start        # ≈ npm start
 # ou même juste :
 bun dev              # raccourci très courant avec Bun
@@ -22,6 +35,8 @@ bun dev              # raccourci très courant avec Bun
 ```
 
 Normalement, la page de démarrage Angular s'affiche, on va comprendre comment elle fonctionne.
+
+![alt text](img/image3.png)
 
 ---
 
