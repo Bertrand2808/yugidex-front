@@ -181,6 +181,42 @@ src/app/components/navbar/
 
 > **Tailwind** : au lieu d'écrire du CSS, tu utilises des classes utilitaires directement dans le HTML. `bg-gray-900` = `background-color: #111827`. [Référence Tailwind](https://tailwindcss.com/docs)
 
+**Exercice 3 — Brancher la navbar pour la voir en direct**
+
+Ta navbar existe, mais elle n'est pas encore affichée ! On va la brancher maintenant pour voir le rendu au fur et à mesure.
+
+**1. Remplace tout le contenu de `app.html`** par :
+
+```html
+<app-navbar />
+
+<main class="container mx-auto p-4 mt-16">
+  <p>Contenu à venir...</p>
+</main>
+```
+
+**2. Importe `NavbarComponent` dans `app.ts`** :
+
+```ts
+import { Component } from '@angular/core';
+import { NavbarComponent } from './components/navbar/navbar';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [NavbarComponent],   // ← RouterOutlet sera ajouté à l'Étape 4
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {}
+```
+
+**3. Lance `bun dev` → ouvre http://localhost:4200**
+
+Tu dois voir ta navbar s'afficher ! Le **Hot Reload** est actif : modifie `navbar.html`, sauvegarde, et la page se met à jour instantanément. Profites-en pour peaufiner tes classes Tailwind.
+
+> **Note** : À l'Étape 4, on ajoutera `RouterOutlet` pour la navigation, sans toucher à `NavbarComponent` déjà en place.
+
 ---
 
 ## Étape 3 — Les Signals
@@ -410,20 +446,21 @@ C'est le "trou magique" où les pages s'affichent :
 
 Dans chaque composant qui utilise ces directives, il faut **importer** :
 
-- Dans `app.component.ts` (pour `<router-outlet>`) :
+- Dans `app.ts` (pour `<router-outlet>`) — `NavbarComponent` est déjà là depuis l'Exercice 3, on ajoute juste `RouterOutlet` :
 
 ```ts
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent],
-  templateUrl: './app.component.html',
+  imports: [RouterOutlet, NavbarComponent],   // ← RouterOutlet ajouté
+  templateUrl: './app.html',
+  styleUrl: './app.css'
 })
-export class AppComponent {}
+export class App {}
 ```
 
 - Dans `navbar.component.ts` (pour `routerLink`) :
@@ -451,13 +488,13 @@ export class NavbarComponent {}
 
 2. Mets à jour `app.routes.ts` avec les 2 routes ci-dessus (importe tes composants).
 
-3. Ajoute `<router-outlet />` dans `app.component.html` (sous la navbar).
+3. Dans `app.html`, remplace `<p>Contenu à venir...</p>` par `<router-outlet />`.
 
 4. Dans `navbar.component.html`, remplace tes `<a href>` par `<a routerLink>`.
 
 5. Dans `navbar.component.ts` → ajoute `RouterLink` dans `imports: []`.
 
-6. Dans `app.component.ts` → ajoute `RouterOutlet` (et `NavbarComponent`) dans `imports: []`.
+6. Dans `app.ts` → ajoute `RouterOutlet` dans `imports: []` (NavbarComponent y est déjà depuis l'Exercice 3).
 
 7. Lance `bun dev` → teste :
    - Clique sur "Accueil" → doit afficher le contenu de HomeComponent
