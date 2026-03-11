@@ -183,6 +183,8 @@ src/app/components/navbar/
 
 **Exercice 3 — Brancher la navbar pour la voir en direct**
 
+> Extensions : Il est recommandé de télécharger les extensions : `Angular Language Service`, `Pretty TypeScript Errors`, `Tailwind CSS IntelliSense`
+
 Ta navbar existe, mais elle n'est pas encore affichée ! On va la brancher maintenant pour voir le rendu au fur et à mesure.
 
 **1. Remplace tout le contenu de `app.html`** par :
