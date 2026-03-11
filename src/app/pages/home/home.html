@@ -1,0 +1,7 @@
+<input type="text"
+  placeholder="Rechercher une carte Yugioh!"
+  [value]="searchQuery()"
+  (input)="searchQuery.set($event.target.value)"
+/>
+
+<p>Recherche : {{ searchQuery() }}</p>
