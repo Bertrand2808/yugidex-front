@@ -1,1 +1,13 @@
-<p>cards works!</p>
+<h2>Liste des cartes YugiDex</h2>
+
+@if (cards().length == 0) {
+  <p>chargement des cartes ...</p>
+} @else {
+  @for (card of cards(); track card.id) {
+    <div class="border p-4 m-2 rounded shadow">
+      <strong>{{ card.name }}</strong> (ATK : {{ card.atk }})
+      <br>
+      <small>Type : {{ card.type }}</small>
+    </div>
+  }
+}
